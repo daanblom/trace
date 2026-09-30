@@ -1,0 +1,15 @@
+[project]
+name = "trace"
+version = "0.3.0"
+description = "Render running and cycling activities as styled map images"
+requires-python = ">=3.11"
+dependencies = [
+  "click>=8.1",
+  "requests>=2.32",
+  "Pillow>=10.0",
+  "shapely>=2.0",
+  "pyproj>=3.6",
+]
+
+[project.scripts]
+trace = "activity_trace.cli:main"

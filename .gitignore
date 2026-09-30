@@ -1,0 +1,4 @@
+.venv
+activity_trace/__*
+*.gpx
+*.png

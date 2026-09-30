@@ -1,0 +1,2 @@
+[console_scripts]
+trace = activity_trace.cli:main
