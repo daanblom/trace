@@ -32,7 +32,7 @@ def load_activity(path: str):
     help="Padding as a fraction of image dimensions.",
 )
 @click.option("--route-width", default=3, show_default=True, type=int)
-@click.option("--glow", default=8, show_default=True, type=int)
+@click.option("--glow", default=0, show_default=True, type=int)
 @click.option("--font", default=None, type=click.Path(exists=True, dir_okay=False), help="Path to a .ttf font.")
 @click.option("--stats/--no-stats", default=True, show_default=True)
 @click.option("--stat-size", default=100, show_default=True, type=int)
