@@ -33,6 +33,7 @@ def draw_stats(
     margin: int = 100,
     stat_size: int = 1200,
     label_size: int = 40,
+    line_gap: int = 10,
 ):
     result = image.convert("RGBA")
     draw = ImageDraw.Draw(result)
@@ -56,7 +57,7 @@ def draw_stats(
     x = margin
     y = image.height - margin
 
-    line_gap = 10
+    # line_gap = 10
 
     # Define color for text 
     def getTextColor(colorscheme):
