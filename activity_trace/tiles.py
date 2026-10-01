@@ -6,11 +6,28 @@ import requests
 from PIL import Image
 
 TILE_SIZE = 256
-TILE_URL = (
-    "https://basemaps.cartocdn.com/rastertiles/dark_nolabels/"
-    "{z}/{x}/{y}.png?key={key}"
-)
+# tile_url = (
+#     "https://basemaps.cartocdn.com/rastertiles/dark_nolabels/"
+#     "{z}/{x}/{y}.png?key={key}"
+# )
 
+def define_map_colorscheme(colorscheme):
+    if colorscheme == "light":
+        tile_url = (
+            "https://basemaps.cartocdn.com/rastertiles/light_nolabels/"
+            "{z}/{x}/{y}.png?key={key}"
+        )
+    elif colorscheme == "dark":
+        tile_url = (
+            "https://basemaps.cartocdn.com/rastertiles/dark_nolabels/"
+            "{z}/{x}/{y}.png?key={key}"
+        )
+    else:
+        raise ValueError("Invalid colorscheme. Choose 'light' or 'dark'.")
+    return tile_url
+
+
+tile_url = define_map_colorscheme("light")
 
 def _tile_xy(lon, lat, zoom):
     n = 2**zoom
@@ -60,7 +77,7 @@ def render_map(lon, lat, zoom, width, height, session=None):
             if ty < 0 or ty >= n:
                 continue
 
-            url = TILE_URL.format(z=z, x=wrapped_x, y=ty, key=api_key)
+            url = tile_url.format(z=z, x=wrapped_x, y=ty, key=api_key)
             response = session.get(url, timeout=20)
             response.raise_for_status()
 

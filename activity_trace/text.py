@@ -57,18 +57,32 @@ def draw_stats(
     y = image.height - margin
 
     line_gap = 10
+
+    # Define color for text 
+    def getTextColor(colorscheme):
+        if colorscheme == "dark":
+            textcolor = (255, 255, 255)  # white text for dark background
+        elif colorscheme == "light":
+            textcolor = (0, 0, 0)  # black text for light background
+        else:
+            print("Invalid colorscheme.")
+
+        return textcolor
+
+    textColor = getTextColor("light") 
+
     # Draw from bottom upward so additional stats remain easy to add later.
     for label, value in reversed(stats):
         bbox = draw.textbbox((x, y), value, font=value_font)
         value_height = bbox[3] - bbox[1]
         y -= value_height
-        draw.text((x, y), value, font=value_font, fill=(255, 255, 255))
+        draw.text((x, y), value, font=value_font, fill=(textColor))
         y -= line_gap
 
         bbox = draw.textbbox((x, y), label, font=label_font)
         label_height = bbox[3] - bbox[1]
         y -= label_height
-        draw.text((x, y), label, font=label_font, fill=(255, 255, 255))
+        draw.text((x, y), label, font=label_font, fill=(textColor))
         y -= stat_size // 2
 
 
