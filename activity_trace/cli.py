@@ -32,6 +32,7 @@ def load_activity(path: str):
     help="Padding as a fraction of image dimensions.",
 )
 @click.option("--route-width", default=3, show_default=True, type=int)
+@click.option("--route-color", default="0, 255, 255", show_default=True, type=str, help="Route color as R,G,B values.")
 @click.option("--glow", default=0, show_default=True, type=int)
 @click.option("--font", default=None, type=click.Path(exists=True, dir_okay=False), help="Path to a .ttf font.")
 @click.option("--stats/--no-stats", default=True, show_default=True)
@@ -40,7 +41,7 @@ def load_activity(path: str):
 @click.option("--margin", default=100, show_default=True, type=int)
 @click.option("--line-gap", default=15, show_default=True, type=int)
 @click.option("-o", "--output", default="run.png", show_default=True, type=click.Path(dir_okay=False, path_type=Path))
-def main(input_file, width, height, padding, route_width, glow, font, stats, stat_size, label_size, margin, line_gap, output):
+def main(input_file, width, height, padding, route_width, glow, font, stats, stat_size, label_size, margin, line_gap, route_color, output):
     """Render a running/cycling GPX or GeoJSON activity as a map image."""
     try:
         activity = load_activity(str(input_file))
@@ -73,6 +74,7 @@ def main(input_file, width, height, padding, route_width, glow, font, stats, sta
                 line_gap=line_gap,
                 stat_size=stat_size,
                 label_size=label_size,
+                # route_color=route_color
             )
 
         output.parent.mkdir(parents=True, exist_ok=True)
