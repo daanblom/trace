@@ -70,7 +70,7 @@ def draw_stats(
 
         return textcolor
 
-    textColor = getTextColor("light") 
+    textColor = getTextColor("dark") 
 
     # Draw from bottom upward so additional stats remain easy to add later.
     for label, value in reversed(stats):

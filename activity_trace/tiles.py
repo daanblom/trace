@@ -27,7 +27,7 @@ def define_map_colorscheme(colorscheme):
     return tile_url
 
 
-tile_url = define_map_colorscheme("light")
+tile_url = define_map_colorscheme("dark")
 
 def _tile_xy(lon, lat, zoom):
     n = 2**zoom
