@@ -1,6 +1,6 @@
 [project]
 name = "trace"
-version = "0.3.1"
+version = "0.3.2"
 description = "Render running and cycling activities as styled map images"
 requires-python = ">=3.11"
 dependencies = [
